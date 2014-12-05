@@ -1,0 +1,28 @@
+
+<html>
+	<head>
+		<center><title> Login Page </title>
+	</head>
+
+<h3>Login</h3>
+
+<body>
+	<form action="./cgi-bin/login.cgi" method="POST">
+		username:<br>
+		<input type ="text" name="username">
+		<br> <br>
+		password:<br>
+		<input type="password" name="password"> <br>
+		(letters and numbers only)
+		<br>
+	<input type="submit" value="Login">
+	</form>
+
+	 <a href="http://cgi.cs.mcgill.ca/~ytaher1/register_test.html">click here to register</a> 
+	
+
+	
+</body>
+</html>
+
+
