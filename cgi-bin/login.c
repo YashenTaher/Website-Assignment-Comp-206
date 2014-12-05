@@ -141,21 +141,26 @@ int main(){
 
 		if(verification(username,password, ulen, pwlen)==0){
 																					// after logging in, redirect to catalogue page
-																					
-			printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cgi.cs.mcgill.ca/~ytaher1/register_test.html\">\n");
+			printf("<html>");																	
+			printf("<meta http-equiv=\"refresh\" content=\"5; url=http://cgi.cs.mcgill.ca/~ytaher1/register_test.html\">\n");
+			printf("</html>");
 			append(username, password);
 		}
 		else {
 																					// if login fails, redirect to errors page
 
-			 printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cgi.cs.mcgill.ca/~ytaher1/register_test.html\">\n");
+			 printf("<html>");
+			 printf("<meta http-equiv=\"refresh\" content=\"5; url=http://cgi.cs.mcgill.ca/~ytaher1/error.html\">\n");
+			 printf("</html>");
 			 return 0;
 
 		}
 	}
 
 	else{
-		printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cgi.cs.mcgill.ca/~ytaher1/register_test.html\">\n");
+		printf("<html>");
+		printf("<meta http-equiv=\"refresh\" content=\"5; url=http://cgi.cs.mcgill.ca/~ytaher1/error.html\">\n");
+		printf("</html>");
 	}
 
 	
