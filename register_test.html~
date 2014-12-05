@@ -1,7 +1,7 @@
 <html>
 <head>
 <center><title> Registration Page </title>
-<link rel="shortcut icon" href="http://cgi.cs.mcgill.ca/~ytaher1/image/liquidation-20141129-favicon.ico" type="image/x-icon" />
+
 </head>
 
 <u><b><h1>Register now</h1></u></b>
@@ -13,6 +13,7 @@
 <br>
 <form action="./cgi-bin/members_perl_test.pl" method="POST">
 Enter your full name: <br>
+<i>(You may seperate by space)<i><br>
 <input type ="text" name="fullname"> <br> <br>
 Choose a username:<br>
 <input type ="text" name="username">
@@ -28,7 +29,9 @@ Retype password:<br>
 <input type="submit" value="Register">
 </form>
 <br>
-If you are already a member, click here to login. <!-- include the link here -->
+If you are already a member, click
+<a href="http://cgi.cs.mcgill.ca/~ytaher1/login.html">here</a>
+ to login.
 
 </body>
 

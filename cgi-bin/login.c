@@ -52,11 +52,12 @@ int stringcompare(char * string, char *tmp, int *size){								// compare string
 
 int verification(char *username, char *password, int *ulen, int *pwlen){			
 
-	char line[100], tmp[3][50];														// line stores form input
+	char line[100], *tmp[3][50];													// line stores form input
 																					// tmp temporarily holds 3 strings of max 50 char
-	FILE *memlist=fopen("members.csv", "r");									// read from members list
+	FILE *memlist=fopen("test_members.csv", "r");									// read from members list
 	int i,j;
-	char*token;
+	char*token, *ch, field[100];
+
 
 	if(memlist==NULL){
 		printf("can't find file..\n");
@@ -75,23 +76,29 @@ int verification(char *username, char *password, int *ulen, int *pwlen){
 				i=0;
 				for(token=strtok(line,",");token!=NULL; token=strtok(NULL,",")){	// separate string by commas
 					strcpy(tmp[i], token);											// there are three fields separated by two commas: name, username, password
-																					// store in tmp[0], tmp[1], tmp[2] respectively
+																					// store in tmp[0], tmp[1], tmp[2] 
 					i++;
 				}
 				if((stringcompare(username,tmp[1], ulen)==0)&&(stringcompare(password,tmp[2],pwlen) == 0)){
 					
-					//printf("%s\n", tmp[0]);										// tmp[0] contains full name of user
-
-					//FILE *edit=fopen("fakecatalogue.html", "a+");
-
-					//FILE *tmp=fopen("tmp.html", "w");
-
+					printf("%s\n", tmp[0]);
+											
+					FILE *edit=fopen("store_fakecatalogue.html", "a+");
+					FILE *file=fopen("fakecatalogue.html", "w");
 
 
-					//fprintf(edit, "\n<input type=\"hidden\" name=\"%s\">\n", tmp[0]);
+					while((ch=fgetc(edit)) !=EOF) fputc(ch,file);
+					fseek(file, 0, SEEK_END);
+
+						
+					fprintf(file, "<input type=\"hidden\" name=\"");
 					
-					//fclose(tmp);
-					//fclose(edit);
+					fprintf(file, "%s", tmp[0]);
+				
+					fprintf(file, "\">\n");					
+
+					fclose(file);
+					fclose(edit);
 
 					return 0;
 				}
@@ -141,26 +148,21 @@ int main(){
 
 		if(verification(username,password, ulen, pwlen)==0){
 																					// after logging in, redirect to catalogue page
-			printf("<html>");																	
-			printf("<meta http-equiv=\"refresh\" content=\"5; url=http://cgi.cs.mcgill.ca/~ytaher1/register_test.html\">\n");
-			printf("</html>");
+																					
+			printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cs.mcgill.ca/~hboo1/fakecatalogue.html\">\n");
 			append(username, password);
 		}
 		else {
 																					// if login fails, redirect to errors page
 
-			 printf("<html>");
-			 printf("<meta http-equiv=\"refresh\" content=\"5; url=http://cgi.cs.mcgill.ca/~ytaher1/error.html\">\n");
-			 printf("</html>");
+			 printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cs.mcgill.ca/~hboo1/error.html\">\n");
 			 return 0;
 
 		}
 	}
 
 	else{
-		printf("<html>");
-		printf("<meta http-equiv=\"refresh\" content=\"5; url=http://cgi.cs.mcgill.ca/~ytaher1/error.html\">\n");
-		printf("</html>");
+		printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cs.mcgill.ca/~hboo1/error.html\">\n");
 	}
 
 	

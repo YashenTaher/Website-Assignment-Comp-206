@@ -2,7 +2,7 @@
 
 use CGI qw(:standard);
 use warnings;
-#use strict;
+#use strict;        due to the figruation of the apache server, use strict causes my code to crash. I was told by a TA that this isnt my fault and I should just not use it
 
 sub check_valid
 {
@@ -15,7 +15,11 @@ sub check_valid
     
     foreach $entry (@entries)
         {   my $len=(length($entry));
-            if ($entry =~ m/[\(\)\[\]\\\|\/\*\^\{\}\$\.\+\?\,\<\>\:\;\'\"\=\-\_\&\%\#\@\!]/) 
+
+	    if (length($name) eq length($entry)) {my $lookfor="\(|\)|\[|\]|\\|\||\/|\*|\^|\{|\}|\$|\.|\+|\?|\,|\<|\>|\:|\;|\'|\"|\=|\-|\_|\&|\%|\#|\@|\!";}
+	    else {my $lookfor="\(|\)|\[|\]|\\|\||\/|\*|\^|\{|\}|\$|\.|\+|\?|\,|\<|\>|\:|\;|\'|\"|\=|\-|\_|\&|\%|\#|\@|\!";}
+
+            	if ($entry =~ m/($lookfor)/) 
 	         {
 		        my $error_message="Entries can not contain special characters or commas";
 		        return $error_message;
@@ -130,7 +134,7 @@ print "Content-Type: text/html\n\n\n\n\n";
 print qq(<html> \n);
 print qq(<head> \n);
 print qq(<title>Redirect to homepage</title> \n);
-print q(<meta http-equiv="refresh" content="5; url="http://cgi.cs.mcgill.ca/~ytaher1/register_test.html">);    ### change this link to the home page ##also this submits all forms on the page so homepage cannot contain a form!
+print q(<meta http-equiv="refresh" content="5; url="http://cgi.cs.mcgill.ca/~ytaher1/home_page.html">);    ### change this link to the home page ##also this submits all forms on the page so homepage cannot contain a form!
 print qq(\n </head> \n);
 print qq(<body> \n);
 print qq(<br><br>Registration successfull, Meta refresh will redirect you in 5 seconds if your browser supports it.<br><br>If not, click the following link to be directed to the homepage. Remember to sign in. \n);
@@ -152,6 +156,7 @@ print qq(<body>\n);
 print qq(<i><font color="red"> \* $reapply\*  </font></i> <br> <br>\n);
 print q(<a href="http://cgi.cs.mcgill.ca/~ytaher1/register_test.html">GO BACK TO REGISTRATION PAGE</a>); ##REMEMBER TO CHANGE THIS ONCE YOU RENAME THE FILE
 print qq(\n <br><br>link to the home page should go here </body>\n);
+print qq(</html>);
 }
 
 
@@ -168,14 +173,15 @@ print qq(<u><b><h1>Register now</h1></u></b>\n);
 print qq(<br>\n);
 print qq(<br>\n);
 print qq(<body>\n);
-print qq(<b>Fill in the following fields (alphanumeric characters and spaces only):</b>\n);
+print qq(<b>Fill in the following fields (alphanumeric characters only):</b>\n);
 print qq(<br>\n);
 print qq(<br>\n);
 print qq(<i><font color="red"> \* $reapply \*  </font></i>\n);
-print qq(<br>\n);
+print qq(<br><br>\n);
 
 print q(<form action="./members_perl_test.pl" method="POST">);
 print qq(\nEnter your full name: <br>\n);
+print qq(\n<i>\( You may seperate by space \)<i><br>\n);
 print q(<input type ="text" name="fullname"> <br> <br>);
 print qq(\nChoose a username:<br>\n);
 print q(<input type ="text" name="username">);
@@ -192,7 +198,9 @@ print q(<input type="submit" value="Register">);
 print qq(\n</form>\n);
 
 print qq(<br>\n);
-print qq(If you are already a member, click here to login.\n); ##include login link here
+print qq(If you are already a member, click );
+print q(<a href="http://cgi.cs.mcgill.ca/~ytaher1/login.html">here</a>);
+print qq( to login.\n);
 
 print qq(</body>\n);
 
