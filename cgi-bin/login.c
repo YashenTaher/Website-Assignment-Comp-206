@@ -54,7 +54,7 @@ int verification(char *username, char *password, int *ulen, int *pwlen){
 
 	char line[100], *tmp[3][50];													// line stores form input
 																					// tmp temporarily holds 3 strings of max 50 char
-	FILE *memlist=fopen("test_members.csv", "r");									// read from members list
+	FILE *memlist=fopen("members.csv", "r");									// read from members list
 	int i,j;
 	char*token, *ch, field[100];
 
@@ -81,21 +81,24 @@ int verification(char *username, char *password, int *ulen, int *pwlen){
 				}
 				if((stringcompare(username,tmp[1], ulen)==0)&&(stringcompare(password,tmp[2],pwlen) == 0)){
 					
-					printf("%s\n", tmp[0]);
+					//printf("%s\n", tmp[0]);										// tmp[0] should hold full name
 											
-					FILE *edit=fopen("store_fakecatalogue.html", "a+");
-					FILE *file=fopen("fakecatalogue.html", "w");
+					FILE *edit=fopen("../catalogue.html", "a+");							//copy index.html
+					FILE *file=fopen("../tempcatalogue.html", "w");					//into tempcatalogue.html - this is what gets called
 
 
-					while((ch=fgetc(edit)) !=EOF) fputc(ch,file);
-					fseek(file, 0, SEEK_END);
+					fseek(file, 0, SEEK_SET);										
 
+					for(i=0;i<1060;i++){												//copy characters into tempcatalogue, insert value = full name, copy rest of file
+						ch=fgetc(edit);
+						fputc(ch,file);
+					}
 						
-					fprintf(file, "<input type=\"hidden\" name=\"");
+					fprintf(file, "value=\"");					
+					fprintf(file, "%s\"", tmp[0]);
+			
+					while((ch=fgetc(edit)) !=EOF) fputc(ch,file);
 					
-					fprintf(file, "%s", tmp[0]);
-				
-					fprintf(file, "\">\n");					
 
 					fclose(file);
 					fclose(edit);
@@ -115,7 +118,7 @@ int verification(char *username, char *password, int *ulen, int *pwlen){
 
 void append(char *username, char *password){										// append logged in users to list
 
-	FILE *loglist=fopen("test_loggedin.csv","a");
+	FILE *loglist=fopen("LoggedIn.csv","a+");
 	fprintf(loglist, "%s, %s\n", username, password);
 	fclose(loglist);
 
@@ -149,20 +152,20 @@ int main(){
 		if(verification(username,password, ulen, pwlen)==0){
 																					// after logging in, redirect to catalogue page
 																					
-			printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cs.mcgill.ca/~hboo1/fakecatalogue.html\">\n");
+			printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cgi.cs.mcgill.ca/~ytaher1/tempcatalogue.html\">\n");
 			append(username, password);
 		}
 		else {
 																					// if login fails, redirect to errors page
 
-			 printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cs.mcgill.ca/~hboo1/error.html\">\n");
+			 printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cgi.cs.mcgill.ca/~ytaher1/error.html\">\n");
 			 return 0;
 
 		}
 	}
 
 	else{
-		printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cs.mcgill.ca/~hboo1/error.html\">\n");
+		printf("<meta http-equiv=\"refresh\" content=\"0; url=http://cgi.cs.mcgill.ca/~ytaher1/error.html\">\n");
 	}
 
 	

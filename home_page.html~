@@ -18,18 +18,28 @@ background:url(./image/white-blanket-647343.jpeg) no-repeat center;
 <br>
 <img src="./image/bleeding_martletcircle.png" alt="Logo" style="width:304px;height:228px">
 <br> <br>
-<font size="35" face="verdana" color="red"><b><u>Home Page<u><b></font></center>
+<font size="35" face="verdana" color="red"> Home Page  </font></center>
 </center>
 <table align="center" cellspacing="40">		
      <tr id="menu">
  	<td><a href="home_page.html">     <IMG SRC="./image/Home_page.png" alt="Homepage">      </a></td>
-	<td><a href="#">      <IMG SRC="./image/Catalouge.png" alt="Catalogue">                </a></td>
+	<td><a href="catalogue.html">      <IMG SRC="./image/Catalouge.png" alt="Catalogue">                </a></td>
 	<td><a href="login.html" target="_blank">       <IMG SRC="./image/login.png" alt="Login">                  </a>  </td>
    </tr>
 </table>
-
 <br>
+<center>
+Welcome to the one and only SSMU Liquidation E-commerce Site! Due to the pointlessness of SSMU, we've all decided that it is for the best if we just dissolve it alltogether.<br>
+We're all tired of the pointless referendums, scandals, and hyper-sensitivity towards issues that don't really matter. <br>
+Our tuitions are expensive, it would be great if we didnt have to waste so much of it on this.<br>
+We've got great deals! Ever wanted to pretend like you had power to change the world, and that your opinion mattered? Order unused ballots now for insane discounts! <br>
+Ever wanted to own an over priced cafe so that you can spy on McGill students to relive those college years? <br>
+Well thats on sale too. Hurry now before some old man with a mid-life crisis, looking to feel young again knabs this deal!!!!!!! 
+
+<IMG SRC="./image/ssmu.png" alt="SSMU"> 
+</center>
+
 
 </body>
 </html>
-<a href="http://www.w3schools.com/" target="_blank">Visit W3Schools!</a>
+

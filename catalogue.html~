@@ -1,0 +1,79 @@
+<html>
+<!--Each item gets its own row in the table. Its quantity box has a minimum and maximum based on its initial quantity in the inventory-->
+<head>
+<title> Catalogue </title>
+</head>
+
+<body>
+<center>
+<style type="text/css" >
+body
+{
+background:url(./image/white-blanket-647343.jpeg) no-repeat center;
+}
+</style>
+<img src="./image/bleeding_martletcircle.png" alt="Logo" style="width:304px;height:228px">
+<br> <br>
+<font size="35" face="verdana" color="red"> <b><u> Home Page <u/></b> </font></center>
+</center>
+<table align="center" cellspacing="40">		
+     <tr id="menu">
+ 	<td><a href="home_page.html">     <IMG SRC="./image/Home_page.png" alt="Homepage">      </a></td>
+	<td><a href="catalogue.html">      <IMG SRC="./image/Catalouge.png" alt="Catalogue">                </a></td>
+	<td><a href="login.html" target="_blank">       <IMG SRC="./image/login.png" alt="Login">                  </a>  </td>
+   </tr>
+</table>
+</center>
+<br>
+
+
+
+ 
+<form action="./cgi-bin/Purchase.py" method="GET">
+<input type="hidden" name="user" >
+
+
+<table border="1" style="width:100%">
+	<th>
+		<td>Image</td>
+		<td>Description</td>
+		<td>Price</td>
+		<td>Select?</td>
+		<td>Quantity</td>
+	</th>
+	<tr>
+		<td>SSMU BROWN BUILDING</td>
+		<td><img src="http://i.imgur.com/6uscM7S.jpg" height=150 width=150></img></td>
+		<td>Over 17,000 sq. ft across 5 floors filled with history of fanatical opposition to the administration and shoemarks of a campus population mostly indifferent to the struggle.<br><br> "This building is a reflection of its second-hander architect." - Howard Roark, April, 1973</td>
+		<td>$4,100,000.00</td>
+		<td><input type="checkbox" name="checkbox" value="building"></td>
+		<td><Input type="number" name="build" value =0 max=1 min=0></td>
+		
+	</tr>
+	<tr>
+		<td>THE NEST CAFE</td>
+		<td><img src="http://i.imgur.com/LJCxhmg.jpg" height=150 width=150></img></td>
+		<td>The Nest is McGill's student-run cafe, located on the second floor of the SSMU building. It was projected to run at a $76,000 deficit for the 2014 fiscal year, but that just means it's a fixer-upper with potential for mad bank. <br><br>
+			"I want to buy the Nest Cafe" - Shawn Corey Carter, December 4, 2014
+		</td>
+		<td>$300,000</td>
+		<td><input type="checkbox" name="checkbox" value="nest"></td>
+		<td><Input type="number" name="thenest" value =0 max="1" min="0"></td>
+	
+	</tr>
+	<tr>
+		<td>1000 GA BALLOTS</td>
+		<td><img src="http://i.imgur.com/29ddtW7.jpg" height=150 width=150></img></td>
+		<td>Hardly used due to a minority who want to silence democratic debate. <br><br>"Had SSMU passed its referendum, we would have stopped immediately." - Israel</td>
+		<td>$0.05</td>
+		<td><input type="checkbox" name="checkbox" value="ballots"></td>
+		<td><Input type="number" name="ballot" value =0 max=1000 min=0></td>
+		
+	</tr>	
+</table>
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
