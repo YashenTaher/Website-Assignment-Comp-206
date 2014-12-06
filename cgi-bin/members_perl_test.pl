@@ -138,7 +138,7 @@ print "Content-Type: text/html\n\n\n\n\n";
 print qq(<html> \n);
 print qq(<head> \n);
 print qq(<title>Redirect to homepage</title> \n);
-print q(<meta http-equiv="refresh" content="0; url="http://cgi.cs.mcgill.ca/~ytaher1/home_page.html">);  
+print q(<meta http-equiv="refresh" content="0;url=http://cgi.cs.mcgill.ca/~ytaher1/home_page.html">);  
 print qq(\n </head> \n);
 print qq(<body> \n);
 print qq(<br><br>Registration successfull, Meta refresh will redirect you in 5 seconds if your browser supports it.<br><br>If not, click the following link to be directed to the homepage. Remember to sign in. \n);
