@@ -95,7 +95,7 @@ int verification(char *username, char *password, int *ulen, int *pwlen){
 					}
 						
 					fprintf(file, "value=\"");					
-					fprintf(file, "%s\"", tmp[0]);
+					fprintf(file, "%s\"", tmp[1]);
 			
 					while((ch=fgetc(edit)) !=EOF) fputc(ch,file);
 					
